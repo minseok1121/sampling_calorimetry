@@ -31,6 +31,7 @@ void ALPGunRunAction::BeginOfRunAction(const G4Run*)
 { 
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
   auto analysisManager = G4RootAnalysisManager::Instance();
+  analysisManager->SetNtupleMerging(true);
   analysisManager->OpenFile();
   G4cout << "Using " << analysisManager->GetType() << G4endl;
   analysisManager->SetVerboseLevel(1);
@@ -52,6 +53,7 @@ void ALPGunRunAction::BeginOfRunAction(const G4Run*)
   analysisManager->CreateNtupleDColumn("pz");
   analysisManager->CreateNtupleDColumn("Mother");
   analysisManager->CreateNtupleDColumn("Charge");
+  analysisManager->CreateNtupleDColumn("PPIPZ");
   analysisManager->FinishNtuple();
 
 
